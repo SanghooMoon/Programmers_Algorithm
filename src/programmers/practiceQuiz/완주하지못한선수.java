@@ -1,6 +1,8 @@
 package programmers.practiceQuiz;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 수많은 마라톤 선수들이 마라톤에 참여하였습니다. 
@@ -14,29 +16,30 @@ public class 완주하지못한선수 {
 	public static String solution(String[] participant, String[] completion) {
         String answer = "";
         
+        
+       
+        List<String> list = new ArrayList<String>(Arrays.asList(completion));
+        
         // 참가자들
         for(int i=0; i<participant.length; i++) {
-        	int count = 0;
-        	// 완주자들
-        	for (int j=0; j<completion.length; j++) {
-        		// 참가자중에 완주자명단에 이름이 있다면
-				if(participant[i].equals(completion[j])) {
-					completion[j] = "";	// 동명이인 2명이상이 있을 수 있으므로, 해당 완주자명 삭제
-					count++;
-				}
-			}
-        	if(count==0) answer=participant[i];
+        	// 완주자명단에 해당 사람이 있으면 해당 명단 삭제
+        	if(list.contains(participant[i])) {
+        		list.remove(participant[i]);
+        	} else {	// 없으면 완주실패
+        		answer = participant[i];
+        	}
         }
-    	System.out.println(answer);
+       
+        System.out.println(answer);
         
         return answer;
     }
 	
 	public static void main(String[] args) {
-		String[] participant = {"leo", "kiki", "eden"};
-		String[] completion = {"kiki", "eden"};
-//		String[] participant = {"mislav", "stanko", "mislav", "ana"};
-//		String[] completion = {"stanko", "ana", "mislav"};
+//		String[] participant = {"leo", "kiki", "eden"};
+//		String[] completion = {"kiki","leo", "eden"};
+		String[] participant = {"mislav", "stanko", "mislav", "ana", "ana"};
+		String[] completion = {"stanko", "ana", "mislav","mislav"};
 		solution(participant, completion);
 	}
 
