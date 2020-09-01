@@ -1,6 +1,5 @@
 package programmers.practiceQuiz;
 
-import java.util.Arrays;
 
 /**
  * 문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
@@ -17,11 +16,24 @@ public class 문자열내림차순으로배치하기 {
         for(int i=0; i<c.length; i++) {
         	if(c[i] >= 'a' && c[i] <= 'z') {
         		for(int j=0; j<c.length; j++) {
-
+        			if(c[i] > c[j]) {
+        				char temp = c[i];
+        				c[i] = c[j];
+        				c[j] = temp;
+        			}
+        		}
+        	} else {
+        		for(int j=0; j<c.length; j++) {
+        			if(c[i] > c[j]) {
+        				char temp = c[i];
+        				c[i] = c[j];
+        				c[j] = temp;
+        			}
         		}
         	}
         }
-        
+        answer = String.valueOf(c);
+        System.out.println(answer);
         return answer;
     }
 	

@@ -12,7 +12,7 @@ public class 수박수박수박수박수박수 {
         	
 //        	if(i%2==0) answer += "수";
 //        	else answer += "박";
-        	
+        	   
         	answer += (i%2==0) ? "수" : "박";
         }
         System.out.println(answer);
