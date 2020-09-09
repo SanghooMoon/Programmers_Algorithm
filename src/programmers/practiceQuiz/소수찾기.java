@@ -10,8 +10,15 @@ package programmers.practiceQuiz;
 public class 소수찾기 {
 	
 	public static int solution(int n) {
-        int answer = 0;
+        int answer = 1;
+		/*
+		 * int answer = n-1;
+		 * 
+		 * for(int i=3; i<=n; i++) { for(int j=i-1; j>1; j--) { if(i%j==0) { answer--;
+		 * break; } } }
+		 */
         
+        System.out.println(answer);
         return answer;
     }
 	
