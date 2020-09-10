@@ -1,8 +1,7 @@
 package programmers.practiceQuiz;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
 /**
  * 수많은 마라톤 선수들이 마라톤에 참여하였습니다. 
@@ -16,10 +15,8 @@ public class 완주하지못한선수 {
 	public static String solution(String[] participant, String[] completion) {
         String answer = "";
         
-        
-       
+        /*
         List<String> list = new ArrayList<String>(Arrays.asList(completion));
-        
         // 참가자들
         for(int i=0; i<participant.length; i++) {
         	// 완주자명단에 해당 사람이 있으면 해당 명단 삭제
@@ -28,8 +25,20 @@ public class 완주하지못한선수 {
         	} else {	// 없으면 완주실패
         		answer = participant[i];
         	}
+        }*/
+        HashMap<String, String> hs = new HashMap<String, String>();
+        for(int i=0; i<completion.length; i++) {
+        	hs.put(completion[i], completion[i]);
         }
-       
+        
+        for(int i=0; i<participant.length; i++) {
+        	if(hs.containsKey(participant[i])) {
+        		hs.remove(participant[i], participant[i]);
+        	} else {
+        		answer = participant[i];
+        	}
+        }
+        
         System.out.println(answer);
         
         return answer;
@@ -39,7 +48,7 @@ public class 완주하지못한선수 {
 //		String[] participant = {"leo", "kiki", "eden"};
 //		String[] completion = {"kiki","leo", "eden"};
 		String[] participant = {"mislav", "stanko", "mislav", "ana", "ana"};
-		String[] completion = {"stanko", "ana", "mislav","mislav"};
+		String[] completion = {"stanko", "ana", "ana","mislav"};
 		solution(participant, completion);
 	}
 
