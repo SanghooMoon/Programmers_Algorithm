@@ -20,20 +20,33 @@ public class 같은숫자는싫어 {
 		 * compare[0] = arr[0]; // 0 ~ length-1 for(int i=1; i<arr.length; i++) {
 		 * if(compare[index]==arr[i]) { continue; } else { compare[++index] = arr[i]; } }
 		 */
-		int[] compare = new int[arr.length];
-		int index = 0;
+		int[] answer = {};
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		
-		compare[0] = arr[0];
-		// 0 ~ length-1
+//		int preNum = 10;
+//        for(int num : arr) {
+//            if(preNum != num)
+//                list.add(num);
+//            preNum = num;
+//        }
+		
+		list.add(arr[0]);
+		
+		int index = 0;
 		for(int i=1; i<arr.length; i++) {
-			
+			if(list.get(index)==arr[i]) {
+				continue;
+			} else {
+				list.add(arr[i]);
+				index++;
+			}
 		}
 		
-		int[] answer = new int[list.size()];
+		answer = new int[list.size()];
 		for(int i=0; i<list.size(); i++) {
 			answer[i] = list.get(i);
 		}
+		
 		System.out.println(Arrays.toString(answer));
 		return answer;
 	}

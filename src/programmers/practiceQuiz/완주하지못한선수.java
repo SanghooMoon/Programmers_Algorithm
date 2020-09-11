@@ -26,27 +26,34 @@ public class 완주하지못한선수 {
         		answer = participant[i];
         	}
         }*/
-        HashMap<String, String> hs = new HashMap<String, String>();
-        for(int i=0; i<completion.length; i++) {
-        	hs.put(completion[i], completion[i]);
-        }
+        HashMap<String, Integer> hs = new HashMap<String, Integer>();
+        System.out.println(hs.hashCode());
         
-        for(int i=0; i<participant.length; i++) {
-        	if(hs.containsKey(participant[i])) {
-        		hs.remove(participant[i], participant[i]);
-        	} else {
-        		answer = participant[i];
+        for(String p : participant) {
+        	hs.put(p, hs.getOrDefault(p, 0)+1);
+            System.out.println(hs.hashCode());
+
+        }
+//        System.out.println(hs);
+        
+        for(String c : completion) {
+        	if(hs.containsKey(c)) {
+        		hs.replace(c, hs.get(c) - 1);
         	}
         }
-        
-        System.out.println(answer);
-        
+//        System.out.println(hs);
+        for(String p : participant) {
+        	if(hs.get(p)!=0) {
+        		answer = p;
+        	}
+        }
+//        System.out.println(answer);
         return answer;
     }
 	
 	public static void main(String[] args) {
 //		String[] participant = {"leo", "kiki", "eden"};
-//		String[] completion = {"kiki","leo", "eden"};
+//		String[] completion = {"kiki", "eden"};
 		String[] participant = {"mislav", "stanko", "mislav", "ana", "ana"};
 		String[] completion = {"stanko", "ana", "ana","mislav"};
 		solution(participant, completion);
