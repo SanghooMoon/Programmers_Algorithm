@@ -10,23 +10,35 @@ package programmers.codingTest;
  * b의 각 행에 들어 있는 1의 개수가 짝수입니다. (0도 짝수입니다.)
  *
  */
+class Test{
+	int a;
+}
 public class 월간코딩테스트_4번 {
 
-	public static int solution(int[][] a) {
-        int answer = -1;
+	public static void solution(Test a) {
+//        int answer = -1;
+//        
+//        int[][] b = new int[a.length][a[0].length];
         
-        int[][] b = new int[a.length][a[0].length];
+        a.a = 20;
+		System.out.println("solution()" + a.a);
+
         
-        
-        
-        return answer;
     }
 	
 	public static void main(String[] args) {
-		int[][] a = {
-				{0,1,0},{1,1,1},{1,1,0},{0,1,1}
-		};
-		solution(a);
+//		int[][] a = {
+//				{0,1,0},{1,1,1},{1,1,0},{0,1,1}
+//		};
+		Test test = new Test();
+		test.a = 10;
+		
+		System.out.println("main()" + test.a);
+		
+		solution(test);
+		
+		System.out.println("마지막" + test.a);
+
 	}
 
 }
