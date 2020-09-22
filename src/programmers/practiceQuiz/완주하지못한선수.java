@@ -34,7 +34,7 @@ public class 완주하지못한선수 {
             System.out.println(hs.hashCode());
 
         }
-//        System.out.println(hs);
+        System.out.println(hs);
         
         for(String c : completion) {
         	if(hs.containsKey(c)) {
