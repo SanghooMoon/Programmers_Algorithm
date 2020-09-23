@@ -1,6 +1,7 @@
 package programmers.practiceQuiz;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * 전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다.
@@ -17,19 +18,50 @@ public class 전화번호목록 {
 	public static boolean solution(String[] phone_book) {
         boolean answer = true;
         
-        HashMap<String, String> hs = new HashMap<String, String>();
-        int min;
-        for(int i=0; i<phone_book.length; i++) {
-        	min = phone_book.length;
+        // 문자열
+        for(int i=0; i<phone_book.length-1; i++) {
+        	int icode = phone_book[i].hashCode();
+        	int length = phone_book[i].length();
+        	
+        	for(int j=i+1; j<phone_book.length; j++) {
+        		if(phone_book[j].length() >= length && icode == phone_book[j].substring(0,length).hashCode()) {
+        			return false;
+        		} else if (phone_book[j].length() < length &&
+        				   phone_book[j].hashCode() == phone_book[i].substring(0, phone_book[j].length()).hashCode() ) {
+        			return false;
+        		}
+        	}
         }
-        System.out.println(hs);
-                
+        
+        /*
+        HashSet<String> hs = new HashSet<String>();
+        for(int i=0; i<phone_book.length; i++) {
+        	hs.add(phone_book[i]);
+        }
+        
+        for(int i=0; i<phone_book.length-1; i++) {
+        	String str = phone_book[i];
+        	
+        	for(int j=i+1; j<phone_book.length; j++) {
+        		
+        		if(phone_book[j].indexOf(str) == 0) {
+        			return false;
+        		}		
+        	}
+        }
+        */
+        
+        
+        
+        
+   
+        
         return answer;
     }
 	
 	
 	public static void main(String[] args) {
-		String[] phone_book = {"119", "97674223", "1195524421"};
+		String[] phone_book = {"1","2","3","4","5","6","7"};
 		solution(phone_book);
 	}
 
