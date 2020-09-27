@@ -1,6 +1,7 @@
 package programmers.practiceQuiz;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.
@@ -14,17 +15,65 @@ public class 기능개발 {
 
 	public static int[] solution(int[] progresses, int[] speeds) {
         int[] answer = {};
+        // 프로젝트 배열 > ArrayList 로 변환
+        ArrayList<Integer> progressesList = new ArrayList<Integer>();
+        for(int i=0; i<progresses.length; i++) {
+        	progressesList.add(progresses[i]);
+        }
+        // 작업 속도 배열 > ArrayList 로 변환
+        ArrayList<Integer> speedsList = new ArrayList<Integer>();
+        for(int i=0; i<speeds.length; i++) {
+        	speedsList.add(speeds[i]);
+        }
+        // 정답 ArrayList
+        ArrayList<Integer> answerList = new ArrayList<Integer>();
+        System.out.println(progressesList);
         
-        Stack<Integer> stack = new Stack<Integer>();
         
+        while(true) {
+        	// 작업 실행 후 결과
+        	for(int i=0; i<progressesList.size(); i++) {
+        		progressesList.set(i, progressesList.get(i) + speedsList.get(i));
+        	}
+        	System.out.println("작업 완료 " + progressesList);
+        	        	
+        	// 만약 첫(head) 프로젝트가 완료되었으면
+        	if(progressesList.get(0) >= 100) {
+        		int count = 0;
+        		// 그 이하 프로젝트들도 확인하여 완료된게 있다면 카운트, 앞에부터 차례로 확인하면서 완료되지않았다면 break;
+        		for(int i=0; i<progressesList.size(); i++) {
+        			if(progressesList.get(i) >= 100) {
+        				++count;
+        			} else {
+        				break;
+        			}
+        		}
+        		// 배출된 만큼 삭제(머리)
+        		for(int i=0; i<count; i++) {
+            		progressesList.remove(0);
+            		speedsList.remove(0);	// 작업속도리스트도 삭제를 해줘야 작업연산 시 에러X            0
+            		System.out.println("삭제 후 " + progressesList);
+        		}
+        		answerList.add(count);	// 결과에 누적
+        	}
+        	
+        	if(progressesList.size() == 0) break;
+        	System.out.println(answerList);
+        	System.out.println();
+        }
         
-        
+        // 정답 배열
+        answer = new int[answerList.size()];
+        for(int i=0; i<answerList.size(); i++) {
+        	answer[i] = answerList.get(i);
+        }
+        System.out.println(Arrays.toString(answer));
         return answer;
     }
 	
 	public static void main(String[] args) {
-		int[] progresses = {93, 30, 55};
-		int[] speeds = {1, 30, 5};
+		int[] progresses = {95, 90, 99, 99, 80, 99};
+		int[] speeds = {1, 1,1,1,1,1};
 		solution(progresses, speeds);
 	}
 
