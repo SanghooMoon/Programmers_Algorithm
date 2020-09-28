@@ -2,6 +2,8 @@ package programmers.practiceQuiz;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.
@@ -15,6 +17,7 @@ public class 기능개발 {
 
 	public static int[] solution(int[] progresses, int[] speeds) {
         int[] answer = {};
+        /*
         // 프로젝트 배열 > ArrayList 로 변환
         ArrayList<Integer> progressesList = new ArrayList<Integer>();
         for(int i=0; i<progresses.length; i++) {
@@ -68,6 +71,17 @@ public class 기능개발 {
         	answer[i] = answerList.get(i);
         }
         System.out.println(Arrays.toString(answer));
+        */
+        Queue<Integer> progressQue = new LinkedList<Integer>();
+        Queue<Integer> speedQue = new LinkedList<Integer>();
+        for(int i=0; i<progresses.length; i++) {
+        	progressQue.add(progresses[i]);
+        	speedQue.add(speeds[i]);
+        }
+        
+        
+        
+        
         return answer;
     }
 	
