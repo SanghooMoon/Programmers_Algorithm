@@ -23,7 +23,6 @@ public class 비밀지도 {
 					arr2Str = "0" + arr2Str;
 				}
 			}
-
 			System.out.println(arr1Str);
 			System.out.println(arr2Str);
 
