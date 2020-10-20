@@ -1,9 +1,13 @@
 # add ignore
 .metadata
+.idea
 bin/
 .settings/
 .classpath
 .project
+*.iml
+*.xml
+out/
 
 # Compiled class file
 *.class
