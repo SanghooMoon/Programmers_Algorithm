@@ -1,7 +1,7 @@
 package programmers.practiceQuiz;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
 무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 한 번에 최대 2명씩 밖에 탈 수 없고, 무게 제한도 있습니다.
@@ -25,22 +25,49 @@ public class 구명보트 {
 	public static int solution(int[] people, int limit) {
         int answer = 0;
         
-        ArrayList<Integer> list = new ArrayList<Integer>();
+        Arrays.sort(people);
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
         for(int p : people) {
-        	list.add(p);
+        	linkedList.add(p);
         }
-        for(int i=0; i<list.size()-1; i++) {
-        	int a = list.get(i);
-        	for(int j=i+1; j<list.size(); j++) {
-        		int b = list.get(j);
+//        Collections.sort(linkedList);
+        System.out.println("선 제외 후 정렬: " + linkedList);
+        
+        // 최소 + 최대값이 무게제한에 통과되면 출발, 효율성에서 Fail, 리스트의 크기만큼 무조건 반복해야해서 그런듯
+//    	for(int j=linkedList.size()-1; j>0; j--) {
+//    		if(linkedList.get(0) + linkedList.get(j) <= limit) {
+//    			answer++;
+//    			linkedList.remove(j);
+//    			linkedList.remove(0);
+//    			j=linkedList.size()-1;
+//    		}
+//    	}
+        
+        // 모두 빠져나올때 까지 반복
+        while(linkedList.size() > 0) {
+        	// 혼자 있을 때 예외처리
+        	if(linkedList.size() == 1) {
+        		answer++; 
+        		linkedList.removeFirst();
+        		break;
+        	}
+        	// 최소값과 최대값을 더했을때 limit을 넘는다면 최대값은 홀로 출발
+        	if(linkedList.getFirst() + linkedList.getLast() > limit) {
+        		answer++;
+    			linkedList.removeLast();
+        	} else { // 그렇지 않다면, 즉 limit 이하라면
+        		answer++;
+    			linkedList.removeLast();
+    			linkedList.removeFirst();
         	}
         }
         
+        System.out.println(answer);
         return answer;
     }	
 	
 	public static void main(String[] args) {
-		int[] people = {70, 50, 80, 50};
+		int[] people = {70, 80, 50};
 		int limit = 100;
 		solution(people, limit);
 	}

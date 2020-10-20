@@ -10,30 +10,34 @@ public class 월간코딩테스트_10월_1번 {
 	public static int solution(int n) {
         int answer = 0;
         
-        String num = "";
+        String str = "";
+        
         // 최종적으론 반전을 해야하니 첫 연산 나머지부터 누적
         // 3진법 반전
-        
-        
+//        while(n>0) {
+//        	if(n == 1 || n == 2) return n;	// 예외처리
+//        	if(n/3 < 3) {
+//        		str += String.valueOf(n%3);
+//        		str += String.valueOf(n/3);
+//        		break;
+//        	} else {
+//        		if(n%3 == 0) str += String.valueOf(0);
+//            	else		 str += String.valueOf(n%3);
+//        	}
+//        	n = n/3;
+//        }
+        // 리팩토링
         while(n>0) {
-        	if(n == 1 || n == 2) return n;
-        	if(n/3 < 3) {
-        		num += String.valueOf(n%3);
-        		num += String.valueOf(n/3);
-        		break;
-        	} else {
-        		if(n%3 == 0) num += String.valueOf(0);
-            	else		 num += String.valueOf(n%3);
-        	}
-        	n = n/3;
+        	str += String.valueOf(n%3);
+            n = n/3;
         }
-        System.out.println(num);
+        System.out.println(str);
         
         // 10진수로 변환
-        for(int i=0; i<num.length(); i++) {
+        for(int i=0; i<str.length(); i++) {
         	
         	int pow = (int)Math.pow(3, i);	// 3의 제곱
-        	int charAt = (num.charAt(num.length() - i - 1) - '0');	// 각 자리수의 정수
+        	int charAt = (str.charAt(str.length() - i - 1) - '0');	// 각 자리수의 정수
         	
         	answer += pow * charAt;
         	
@@ -44,7 +48,7 @@ public class 월간코딩테스트_10월_1번 {
     }
 	
 	public static void main(String[] args) {
-		solution(1);
+		solution(45);
 	}
 
 }
