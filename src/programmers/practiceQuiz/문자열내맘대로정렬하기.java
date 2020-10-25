@@ -10,55 +10,27 @@ import java.util.Arrays;
 public class 문자열내맘대로정렬하기 {
 
 	public static String[] solution(String[] strings, int n) {
-		String[] answer = new String[strings.length];
-		/*
-		char[] charArr = new char[strings.length];
-		
-		for(int i=0; i<strings.length; i++) {
-			charArr[i] = strings[i].charAt(n);
-		}
-		
-		for(int i=0; i<strings.length; i++) {
-			for(int j=i+1; j<strings.length; j++) {
-				if(charArr[i] > charArr[j]) {
-					char temp = charArr[i];
-					charArr[i] = charArr[j];
-					charArr[j] = temp;
-					
-					String s = strings[i];
-					strings[i] = strings[j];
-					strings[j] = s;
-					
-				} else if (charArr[i] == charArr[j]) {
-					if(strings[i].charAt(n-1) > strings[j].charAt(n-1)) {
-						String s = strings[i];
-						strings[i] = strings[j];
-						strings[j] = s;
-					} else if(strings[i].charAt(n+1) > strings[j].charAt(n+1)) {
-						String s = strings[i];
-						strings[i] = strings[j];
-						strings[j] = s;
-					}
-				}
+			String[] answer = new String[strings.length];
+
+			// n번째 문자를 문자열 선두로 추가하여 재저장
+			for(int i=0; i< strings.length; i++){
+				strings[i] = strings[i].charAt(n) + strings[i];
 			}
-		}
-		*/
-		
-		for(int i=0; i<strings.length; i++) {
-			strings[i] = strings[i].charAt(n) + strings[i];
-		}
-		System.out.println(Arrays.toString(strings));
-			
-//		System.out.println(Arrays.toString(strings));
-		System.out.println(Arrays.toString(answer));
-		
-		return answer;
+			// 정렬
+			Arrays.sort(strings);
+
+			// 결과 저장
+			for(int i=0; i< answer.length; i++){
+				answer[i] = strings[i].substring(1);
+			}
+
+			return answer;
 	}
 
 	public static void main(String[] args) {
 //		String[] strings = {"aaa", "ddd", "eee", "bbb", "ccz", "ccc"};
 		String[] strings = { "abcez", "abcea", "cdx" };
-		solution(strings, 1);
+		solution(strings, 2);
 	}
 
 }
