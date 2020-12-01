@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 // 두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
-public class A더하기B빼기7 {
+public class A더하기B_7 {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
