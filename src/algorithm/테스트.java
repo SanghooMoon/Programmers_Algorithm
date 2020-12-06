@@ -4,6 +4,10 @@ public class 테스트 {
 
 	public static void main(String[] args) {
 		
+		
+	}
+
+	private static void question_1() {
 		// 승현이 질문
 		// 결과 저장 변수
 		StringBuffer sb = new StringBuffer();
