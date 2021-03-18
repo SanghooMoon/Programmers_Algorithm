@@ -10,7 +10,7 @@ public class 다트게임 {
         
         // stack에 점수, 보너스, 옵션별로 담기
         for(int i=dartResult.length()-1; i>=0; i--) {
-        	String s = dartResult.charAt(i) + "";
+        	String s = String.valueOf(dartResult.charAt(i));
         	if(i > 0 && dartResult.charAt(i) == '0' && dartResult.charAt(i-1) == '1') {
         		i--;
         		st.add("10");
